@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Projects Page</title>
+    </head>
+
+    <body>
+        <div id = "content">
+            <!--Dropdown-->
+            <div class = "dropdown">
+                <button onClick = "dropdown()" class = "dropbtn">Projects</button>
+                <div id="MyDropdown" class = "dropdownContent">
+                    <a href = "projects.html">Projects</a>
+                    <a href = "links.html">Links</a>
+                    <a href = "patterns.html">Patterns</a>
+                </div>
+            </div>
+            <!--Project Title-->
+        </div>
+    </body>
+
+    <script>
+        
+        function dropdown() {
+            document.getElementById("MyDropdown");
+            classList.toggle("show");
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdownContent");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+    </script>
+</html>
