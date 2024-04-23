@@ -46,3 +46,7 @@ hr.rounded {
     text-align: left;
     padding: 10px;
 }
+
+.linkButton:hover {
+    background-color: #D0B8AC;
+}

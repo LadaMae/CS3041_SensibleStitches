@@ -27,10 +27,10 @@
             <hr class = "rounded">
         </div>
 
-        <div class = "linkList">
-            <button class = "linkButton"> Link 1</button>
-            <button class = "linkButton"> Link 2</button>
-            <button class = "linkButton"> Link 3</button>
+        <div id = "linkNavigation" class = "linkList">
+            <a href = "https://shorturl.at/bF024" class = "linkButton"> Link 1</a>
+            <a href = "https://shorturl.at/bMT17" class = "linkButton"> Link 2</a>
+            <a href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ" class = "linkButton"> Link 3</a>
         </div>
 
         <div class = "linkButtonDiv">
@@ -57,7 +57,18 @@
             }
 
             function addLink() {
-                
+                var linkURL = prompt("Enter Link URL:");
+                var linkName = prompt("Enter Link name:");
+
+                if (linkName && linkURL) {
+                    var linkNav = document.getElementById("linkNavigation");
+                    var newButton = document.createElement("a");
+                    newButton.className = "linkButton";
+                    newButton.textContent = linkName;
+                    newButton.href = linkURL;
+                    linkNav.appendChild(newButton);
+
+                }
             }
     
         </script>
