@@ -27,6 +27,16 @@
             <hr class = "rounded">
         </div>
 
+        <div id = "patternNavigation" class = "patternList">
+            <a href = "" class = "patternButton">Pattern 1</a>
+            <a href = "" class = "patternButton"> Pattern 2</a>
+            <a href = "" class = "patternButton"> Pattern 3</a>
+        </div>
+
+        <div class = "patternButtonDiv">
+            <button class="addPatternBtn" onclick="addPattern()"><i class="glyphicon glyphicon-plus" style = "font-size: 64px; color: #FBFEFB;"></i></button>
+        </div>
+
         <script>
         
             function dropdown() {
@@ -43,6 +53,21 @@
                             openDropdown.classList.remove('show');
                         }
                     }
+                }
+            }
+
+            function addPattern() {
+                var PatternURL = prompt("Enter Pattern URL:");
+                var PatternName = prompt("Enter Pattern name:");
+
+                if (PatternName && PatternURL) {
+                    var patternnav = document.getElementById("patternNavigation");
+                    var newButton = document.createElement("a");
+                    newButton.className = "patternButton";
+                    newButton.textContent = PatternName;
+                    newButton.href = PatternURL;
+                    patternnav.appendChild(newButton);
+
                 }
             }
     
