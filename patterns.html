@@ -2,23 +2,29 @@
 
 <html>
     <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/> 
         <link rel="stylesheet" type="text/css" href="dropdown.css" media="screen and (orientation:portrait)"/>
-
-        <title>Projects Page</title>
+        <link rel="stylesheet" type="text/css" href="patterns.css" media="screen and (orientation:portrait)"/>
+        <title>Patterns Page</title>
     </head>
 
     <body>
         <div id = "header">
             <!--Dropdown-->
             <div class = "dropdown">
-                <button onClick = "dropdown()" class = "dropbtn">Patterns</button>
+                <button onClick = "dropdown()" class = "dropbtn">Navigate<i id="dropdownSymbol" class = "glyphicon glyphicon-chevron-down" style = "font-size:40px; float:right; margin-top: 10px;"></i></button>
                 <div id="myDropdown" class = "dropdown-content">
-                    <a href = "projects.html">Projects</a>
-                    <a href = "links.html">Links</a>
-                    <a href = "patterns.html">Patterns</a>
+                    <a href = "projects.html">Projects<i class = "glyphicon glyphicon-chevron-right" style = "font-size:30px; float:right;"></i></a>
+                    <a href = "links.html">Links<i class = "glyphicon glyphicon-chevron-right" style = "font-size:30px; float:right;"></i></a>
+                    <a href = "patterns.html">Patterns<i class = "glyphicon glyphicon-chevron-right" style = "font-size:30px; float:right;"></i></a>
                 </div>
             </div>
             <!--Project Title-->
+        </div>
+
+        <div>
+            <h1 class = "patternHeader">PATTERNS</h1>
+            <hr class = "rounded">
         </div>
 
         <script>

@@ -2,23 +2,39 @@
 
 <html>
     <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/> 
         <link rel="stylesheet" type="text/css" href="dropdown.css" media="screen and (orientation:portrait)"/>
-
-        <title>Projects Page</title>
+        <link rel="stylesheet" type="text/css" href="links.css" media="screen and (orientation:portrait)"/>
+        <title>Links Page</title>
     </head>
 
     <body>
         <div id = "header">
             <!--Dropdown-->
             <div class = "dropdown">
-                <button onClick = "dropdown()" class = "dropbtn">Links</button>
+                <button onClick = "dropdown()" class = "dropbtn">Navigate<i id="dropdownSymbol" class = "glyphicon glyphicon-chevron-down" style = "font-size:40px; float:right; margin-top: 10px;"></i></button>
                 <div id="myDropdown" class = "dropdown-content">
-                    <a href = "projects.html">Projects</a>
-                    <a href = "links.html">Links</a>
-                    <a href = "patterns.html">Patterns</a>
+                    <a href = "projects.html">Projects<i class = "glyphicon glyphicon-chevron-right" style = "font-size:30px; float:right;"></i></a>
+                    <a href = "links.html">Links<i class = "glyphicon glyphicon-chevron-right" style = "font-size:30px; float:right;"></i></a>
+                    <a href = "patterns.html">Patterns<i class = "glyphicon glyphicon-chevron-right" style = "font-size:30px; float:right;"></i></a>
                 </div>
             </div>
             <!--Project Title-->
+        </div>
+
+        <div style="margin:20px;">
+            <h1 class = "linksHeader">LINKS</h1>
+            <hr class = "rounded">
+        </div>
+
+        <div class = "linkList">
+            <button class = "linkButton"> Link 1</button>
+            <button class = "linkButton"> Link 2</button>
+            <button class = "linkButton"> Link 3</button>
+        </div>
+
+        <div class = "linkButtonDiv">
+            <button class="addLinkBtn" onclick="addLink()"><i class="glyphicon glyphicon-plus" style = "font-size: 64px; color: #FBFEFB;"></i></button>
         </div>
 
         <script>
@@ -38,6 +54,10 @@
                         }
                     }
                 }
+            }
+
+            function addLink() {
+                
             }
     
         </script>

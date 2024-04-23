@@ -1,0 +1,76 @@
+.projectHeader {
+    text-align: center;
+    font-size: 80px;
+    margin-top: 25px;
+    color: #83746C;
+}
+
+#projectSizeButtons {
+    padding: 3px;
+    width: 100%;
+    height: 50px;
+}
+
+#smallerSize {
+    margin-left: 5px;
+    margin-right: 5px;
+    float: right;
+}
+
+#largerSize {
+    margin-left: 5px;
+    margin-right: 5px;
+    float: right;
+}
+
+hr.rounded {
+    background-color: #D0B8AC;
+    border-top: 8px solid #D0B8AC;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    width: 95%;
+}
+
+div.projectNav {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+}
+
+div.projectNav span {
+    display: table-cell;
+    text-align: center;
+}
+
+.projectButton {
+    background-color: #EFE5DC;
+    border-color: #D0B8AC;
+    color: #83746C;
+    height: 325px;
+    width: 400px;
+    border-radius: 10%;
+    font-size: 40px;
+    margin: 10px;
+}
+
+.projectButtonDiv {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1;
+}
+
+.addProjectBtn {
+    background-color: #D0B8AC;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    transition: background-color 0.3s;
+}
+
+.addProjectBtn:hover {
+    background-color: #F3D8C7;
+}

@@ -2,33 +2,60 @@
 
 <html>
     <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/> 
         <link rel="stylesheet" type="text/css" href="dropdown.css" media="screen and (orientation:portrait)"/>
-
-        <title>Projects Page</title>
+        <link rel="stylesheet" type="text/css" href="projects.css" media="screen and (orientation:portrait)"/>
     </head>
 
     <body>
         <div id = "header">
             <!--Dropdown-->
             <div class = "dropdown">
-                <button onClick = "dropdown()" class = "dropbtn">Projects</button>
+                <button onClick = "dropdown()" class = "dropbtn">Navigate<i id="dropdownSymbol" class = "glyphicon glyphicon-chevron-down" style = "font-size:40px; float:right; margin-top: 10px;"></i></button>
                 <div id="myDropdown" class = "dropdown-content">
-                    <a href = "projects.html">Projects</a>
-                    <a href = "links.html">Links</a>
-                    <a href = "patterns.html">Patterns</a>
+                    <a href = "projects.html">Projects<i class = "glyphicon glyphicon-chevron-right" style = "font-size:30px; float:right;"></i></a>
+                    <a href = "links.html">Links<i class = "glyphicon glyphicon-chevron-right" style = "font-size:30px; float:right;"></i></a>
+                    <a href = "patterns.html">Patterns<i class = "glyphicon glyphicon-chevron-right" style = "font-size:30px; float:right;"></i></a>
                 </div>
             </div>
             <!--Project Title-->
         </div>
 
+        <div>
+            <h1 class = "projectHeader">PROJECTS</h1>
+                
+
+            <div>
+                 <div id = "projectSizeButtons">
+                    <img id = "smallerSize" src = "smallerSizeIcon.png" onclick="changeSize(225, 225, 30)"/>
+                    <img id = "largerSize" src = "largerSizeIcon.png" onclick="changeSize(400, 325, 40)"/>
+                </div>
+                <hr class = "rounded">
+            </div>
+        </div>
+
+        <div id = "projectNavigation" class = "projectNav">
+            <button class = "projectButton">Project 1</button>
+            <button class = "projectButton">Project 2</button>
+            <button class = "projectButton">Project 3</button>
+            <button class = "projectButton">Project 4</button>
+        </div>
+
+        <div class = "projectButtonDiv">
+            <button class="addProjectBtn" onclick="addProject()"><i class="glyphicon glyphicon-plus" style = "font-size: 64px; color: #FBFEFB;"></i></button>
+        </div>
+
         <script>
         
             function dropdown() {
+                document.getElementById("dropdownSymbol").className = "glyphicon glyphicon-chevron-up";
                 document.getElementById("myDropdown").classList.toggle("show");
             }
     
             window.onclick = function(event) {
                 if (!event.target.matches('.dropbtn')) {
+                    if (document.getElementById("dropdownSymbol").className == "glyphicon glyphicon-chevron-down")document.getElementById("dropdownSymbol").className = "glyphicon glyphicon-chevron-up";
+                    if (document.getElementById("dropdownSymbol").className == "glyphicon glyphicon-chevron-up")document.getElementById("dropdownSymbol").className = "glyphicon glyphicon-chevron-down";
                     var dropdowns = document.getElementsByClassName("dropdown-content");
                     var i;
                     for (i = 0; i < dropdowns.length; i++) {
@@ -39,6 +66,72 @@
                     }
                 }
             }
+
+            // Function to retrieve projects from local storage
+            /**function getProjectsFromStorage() {
+                return JSON.parse(localStorage.getItem('projects')) || [];
+            }
+
+            // Function to save projects to local storage
+            function saveProjectsToStorage(projects) {
+                localStorage.setItem('projects', JSON.stringify(projects));
+            }
+
+            // Function to load projects from local storage and populate the UI
+            function loadProjects() {
+                var projectNav = document.getElementById("projectNavigation");
+                projectNav.innerHTML = ''; // Clear existing projects
+
+                var projects = getProjectsFromStorage();
+                projects.forEach(function(projectName) {
+                    var newButton = document.createElement("button");
+                    newButton.className = "projectButton";
+                    newButton.textContent = projectName;
+                    //newButton.addEventListener('click', function() {
+                        // Redirect to project page when the button is clicked
+                        //window.location.href = project.pageUrl;
+                    //});
+                    projectNav.appendChild(newButton);
+                });
+            }*/
+
+            function changeSize(widthChange, heightChange, fontSizeChange) {
+                const buttons = document.querySelectorAll('.projectButton');
+                buttons.forEach(button => {
+                    let currentWidth = parseInt(button.style.width) || 400;
+                    let currentHeight = parseInt(button.style.height) || 325;
+                    let currentFontSize = parseInt(button.style.fontSize) || 40;
+
+                    let newWidth = widthChange;
+                    let newHeight = heightChange;
+                    let newFontSize = fontSizeChange;
+
+                    button.style.width = `${newWidth}px`;
+                    button.style.height = `${newHeight}px`;
+                    button.style.fontSize = `${newFontSize}px`;
+                });
+            }
+
+            function addProject() {
+                var projectName = prompt("Enter project name:");
+                if (projectName) {
+                    var projectNav = document.getElementById("projectNavigation");
+                    var newButton = document.createElement("button");
+                    newButton.className = "projectButton";
+                    newButton.textContent = projectName;
+                    projectNav.appendChild(newButton);
+
+                    //var projects = getProjectsFromStorage();
+                    //projects.push(projectName); //, pageUrl: projectPageUrl });
+                    //saveProjectsToStorage(projects);
+                    //loadProjects();
+                }
+            }
+
+            /**window.onload = function() {
+                loadProjects();
+            };*/
+
     
         </script>
     </body>
