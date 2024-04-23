@@ -38,10 +38,6 @@ div.projectNav {
     justify-content: space-around;
 }
 
-div.projectNav span {
-    display: table-cell;
-    text-align: center;
-}
 
 .projectButton {
     background-color: #EFE5DC;

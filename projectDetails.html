@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/> 
+        <link rel="stylesheet" type="text/css" href="dropdown.css" media="screen and (orientation:portrait)"/>
+        <link rel="stylesheet" type="text/css" href="projectDetails.css" media="screen and (orientation:portrait)"/>
+    </head>
+
+    <body>
+
+        <div id = "header">
+            <!--Dropdown-->
+            <div class = "dropdown">
+                <button onClick = "dropdown()" class = "dropbtn">Navigate<i id="dropdownSymbol" class = "glyphicon glyphicon-chevron-down" style = "font-size:40px; float:right; margin-top: 10px;"></i></button>
+                <div id="myDropdown" class = "dropdown-content">
+                    <a href = "projects.html">Projects<i class = "glyphicon glyphicon-chevron-right" style = "font-size:30px; float:right;"></i></a>
+                    <a href = "links.html">Links<i class = "glyphicon glyphicon-chevron-right" style = "font-size:30px; float:right;"></i></a>
+                    <a href = "patterns.html">Patterns<i class = "glyphicon glyphicon-chevron-right" style = "font-size:30px; float:right;"></i></a>
+                </div>
+            </div>
+            <!--Project Title-->
+        </div>
+
+
+        <div>
+            <h1 class = "projectHeader">Project 1</h1>
+            <h2 id = "currTab" class = "topicText">select a tab to get started</h2>
+            <hr class = "rounded">
+        </div>
+
+        <div class="projectTabs">
+            <button class="tabLinks" onclick="openTab(event, 'refImages')"><i class = "glyphicon glyphicon-picture" style = "font-size:80px; float:center;"></i></button>
+            <button class="tabLinks" onclick="openTab(event, 'notes')"><i class = "glyphicon glyphicon-pencil" style = "font-size:80px; float:center;"></i></button>
+            <button class="tabLinks" onclick="openTab(event, 'measurements')"><i class = "glyphicon glyphicon-scissors" style = "font-size:80px; float:center;"></i></button>
+            <button class="tabLinks" onclick="openTab(event, 'finishedPhotos')"><i class = "glyphicon glyphicon-camera" style = "font-size:80px; float:center;"></i></button>
+        </div>
+
+        <!-- Tab content -->
+        <div id="refImages" class="tabContent">
+            <div class = "refImageGallery">
+
+            </div>
+
+            <div class = "addRefPhoto">
+                <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="displayImage(this)">
+                <button class="addRefButton" onclick="document.getElementById('fileInput').click()">
+                    <i class="glyphicon glyphicon-plus" style = "font-size: 64px; color: #FBFEFB;"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="notes" class="tabContent">
+            <h3>Paris</h3>
+            <p>Paris is the capital of France.</p>
+        </div>
+        
+        <div id="measurements" class="tabContent">
+            <h3>Tokyo</h3>
+            <p>Tokyo is the capital of Japan.</p>
+        </div>
+
+        <div id="finishedPhotos" class="tabContent">
+            <h3>Tokyo</h3>
+            <p>Tokyo is the capital of Japan.</p>
+        </div>
+
+        <script>
+            function dropdown() {
+                document.getElementById("dropdownSymbol").className = "glyphicon glyphicon-chevron-up";
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
+    
+            window.onclick = function(event) {
+                if (!event.target.matches('.dropbtn')) {
+                    if (document.getElementById("dropdownSymbol").className == "glyphicon glyphicon-chevron-down")document.getElementById("dropdownSymbol").className = "glyphicon glyphicon-chevron-up";
+                    if (document.getElementById("dropdownSymbol").className == "glyphicon glyphicon-chevron-up")document.getElementById("dropdownSymbol").className = "glyphicon glyphicon-chevron-down";
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
+
+            function openTab(evt, tabFunction) {
+                var i, tabContent, tabLinks;
+
+                tabContent = document.getElementsByClassName("tabContent");
+                for (i = 0; i < tabContent.length; i++) {
+                    tabContent[i].style.display = "none";
+                }
+                tabLinks = document.getElementsByClassName("tabLinks");
+                for (i = 0; i < tabLinks.length; i++) {
+                    tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+                }
+
+                document.getElementById(tabFunction).style.display = "block";
+                evt.currentTarget.className += " active";
+
+                switch(tabFunction)
+                {
+                    case "refImages":
+                        document.getElementById("currTab").textContent = "Reference Images";
+                        break;
+
+                    case "notes":
+                    document.getElementById("currTab").textContent = "Notes";
+                    break;
+
+                    case "measurements":
+                    document.getElementById("currTab").textContent = "Measurements";
+                    break;
+
+                    case "finishedPhotos":
+                    document.getElementById("currTab").textContent = "Finished Photos";
+                    break;
+                }
+
+            }
+
+            function displayImage(input) {
+                var gallery = document.querySelector('.refImageGallery');
+
+                // Check if any file is selected
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        // Create an image element
+                        var img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.maxWidth = '100%';
+                        img.style.maxHeight = '200px'; // Adjust height as needed
+                        img.style.cursor = 'pointer'; // Set cursor to pointer to indicate clickable
+                        gallery.appendChild(img);
+
+                        // Add event listener to the image element to handle expanding and minimizing
+                        img.addEventListener('click', function() {
+                            if (img.style.maxHeight === 'none') {
+                                // If the image is already expanded, minimize it
+                                img.style.maxHeight = '200px';
+                            } else {
+                                // If the image is not expanded, expand it
+                                img.style.maxHeight = 'none';
+                            }
+                        });
+
+                        // Add event listener to the document to minimize the image when clicked outside
+                        document.addEventListener('click', function(event) {
+                            if (!img.contains(event.target)) {
+                                img.style.maxHeight = '200px';
+                            }
+                        });
+                    };
+
+                    // Read the selected file as URL
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+
+        </script>
+    </body>
+</html>

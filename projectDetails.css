@@ -1,0 +1,117 @@
+.projectHeader {
+    text-align: center;
+    font-size: 80px;
+    margin-top: 25px;
+    color: #83746C;
+    text-transform: uppercase;
+}
+
+.topicText {
+    text-align: center;
+    font-size: 40px;
+    margin-top: 25px;
+    color: #83746C;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+hr.rounded {
+    background-color: #D0B8AC;
+    border-top: 8px solid #D0B8AC;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    width: 95%;
+}
+
+.projectTabs {
+    display: flex;
+    justify-content: space-around;
+    overflow: hidden;
+    border: 1px solid #83746C;
+    background-color: #D0B8AC;
+    margin-left: 20px;
+    margin-right: 20px;
+    
+}
+
+.projectTabs button {
+    background-color: #D0B8AC;
+    font-size: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #FBFEFB;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+.projectTabs button:hover {
+    background-color: #83746C;
+}
+
+.tabContent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    animation: fadeEffect 1s;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.tabContent h3 {
+    font-size: 60px;
+    color: #83746C;
+}
+
+.tabContent p {
+    font-size: 40px;
+    color: #83746C;
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+div.refImageGallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.refImageGallery img {
+    flex: 0 0 auto; 
+    margin-right: 10px;
+    margin-bottom: 10px; 
+    max-width: calc(33.333% - 10px); 
+    max-height: 200px; 
+    cursor: pointer; 
+    box-sizing: border-box; 
+}
+
+.addRefPhoto {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1;
+}
+
+.addRefButton {
+    background-color: #D0B8AC;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    transition: background-color 0.3s;
+}
+
+.addRefButton:hover {
+    background-color: #F3D8C7;
+}
