@@ -49,13 +49,92 @@
         </div>
         
         <div id="notes" class="tabContent">
-            <h3>Paris</h3>
-            <p>Paris is the capital of France.</p>
+            <div id="patternNavigation" class="patternList">
+                <a href="#" class="projectNote" onclick="toggleNotes('pattern1', this)">Pattern 1<i class = "glyphicon glyphicon-chevron-down" style = "font-size:30px; float:right;margin-top: 10px;"></i></a>
+                <a href="#" class="projectNote" onclick="toggleNotes('pattern2', this)">Pattern 2<i class = "glyphicon glyphicon-chevron-down" style = "font-size:30px; float:right;margin-top: 10px;"></i></a>
+                <a href="#" class="projectNote" onclick="toggleNotes('pattern3', this)">Pattern 3<i class = "glyphicon glyphicon-chevron-down" style = "font-size:30px; float:right;margin-top: 10px;"></i></a>
+            </div>
+
+            <div id = "noteCollection">
+
+                <div id="pattern1" class="notes">
+                    <p>Notes for Pattern 1</p>
+                </div>
+
+                <div id="pattern2" class="notes">
+                    <p>Notes for Pattern 2</p>
+                </div>
+                
+                <div id="pattern3" class="notes">
+                    <p>Notes for Pattern 3</p>
+                </div>
+            </div>
+
+            <div class = "noteButtonDiv">
+                <button class="addNoteButton" onclick="addNote()">
+                    <i class="glyphicon glyphicon-plus" style = "font-size: 64px; color: #FBFEFB;"></i>
+                </button>
+            </div>
+            
         </div>
         
+        
         <div id="measurements" class="tabContent">
-            <h3>Tokyo</h3>
-            <p>Tokyo is the capital of Japan.</p>
+            <div id="measNavigation" class="measList">
+                <a href="#" class="measDivider" onclick="toggleMeas('head', this)">Head<i class = "glyphicon glyphicon-chevron-down" style = "font-size:30px; float:right;margin-top: 10px;"></i></a>
+                <a href="#" class="measDivider" onclick="toggleMeas('torso', this)">Torso<i class = "glyphicon glyphicon-chevron-down" style = "font-size:30px; float:right;margin-top: 10px;"></i></a>
+                <a href="#" class="measDivider" onclick="toggleMeas('bottom', this)">Bottom<i class = "glyphicon glyphicon-chevron-down" style = "font-size:30px; float:right;margin-top: 10px;"></i></a>
+                <a href="#" class="measDivider" onclick="toggleMeas('limbs', this)">Limbs<i class = "glyphicon glyphicon-chevron-down" style = "font-size:30px; float:right;margin-top: 10px;"></i></a>
+            </div>
+
+            <div id = "head" class = "measurements">
+                
+            </div>
+
+            <div id = "torso" class = "measurements">
+                <div class = "measurementInput">
+                    <h3>Torso</h3>
+                    <input type = "text">
+                </div>
+                <div class = "measurementInput">
+                    <h3>Shoulder</h3>
+                    <input type = "text">
+                </div>
+                <div class = "measurementInput">
+                    <h3>Bust</h3>
+                    <input type = "text">
+                </div>
+                <div class = "measurementInput">
+                    <h3>Waist</h3>
+                    <input type = "text">
+                </div>
+                <div class = "measurementInput">
+                    <h3>Hips</h3>
+                    <input type = "text">
+                </div>
+                <div class = "measurementInput">
+                    <h3>Bust Apex</h3>
+                    <input type = "text">
+                </div>
+                <div class = "measurementInput">
+                    <h3>Neck to Waist (Front)</h3>
+                    <input type = "text">
+                </div>
+                <div class = "measurementInput">
+                    <h3>Neck to Waist (Back)</h3>
+                    <input type = "text">
+                </div>
+ 
+            </div>
+
+            <div id = "bottom" class = "measurements">
+                
+            </div>
+
+            <div id = "limbs" class = "measurements">
+                
+            </div>
+
         </div>
 
         <div id="finishedPhotos" class="tabContent">
@@ -166,8 +245,74 @@
                 }
             }
 
+            function toggleNotes(noteName, link) {
+                // Get the notes container
+                var notes = document.getElementById(noteName);
 
-            
+                // Hide all other notes before showing the selected notes
+                var allNotes = document.getElementsByClassName('notes');
+                for (var i = 0; i < allNotes.length; i++) {
+                    allNotes[i].style.display = 'none';
+                }
+
+                // Toggle the display of the selected notes
+                if (notes.style.display === 'block') {
+                    notes.style.display = 'none';
+                } else {
+                    // If the notes container is not displayed, insert it before the next sibling of the clicked link's parent node
+                    link.parentNode.insertBefore(notes, link.nextSibling);
+                    notes.style.display = 'block';
+                }
+            }
+
+            function addNote() {
+                var noteName = prompt("Enter title of note:");
+                var noteBody = prompt("Enter note:");
+                if (noteName && noteBody) {
+                    var noteNav = document.getElementById("notes");
+                    var newNote = document.createElement("div");
+                    newNote.id = noteName;
+                    newNote.className = "notes";
+                    var noteInfo = document.createElement("p");
+                    noteInfo.textContent = noteBody;
+                    newNote.appendChild(noteInfo);
+
+                    var noteCollection = document.getElementById("noteCollection");
+                    noteCollection.appendChild(newNote);
+                    
+                    var newNoteNav = document.createElement("a");
+                    newNoteNav.href = "#";
+                    newNoteNav.className = "projectNote";
+                    newNoteNav.onclick = function() {toggleNotes(noteName, this);};
+                    newNoteNav.textContent = noteName;
+
+                    noteNav.appendChild(newNoteNav);
+
+                }
+            }
+
+            function toggleMeas(measTopic, link) {
+                // Get the notes container
+                var measInfo = document.getElementById(measTopic);
+
+                // Hide all other notes before showing the selected notes
+                var allmeasurements = document.getElementsByClassName('measurements');
+                for (var i = 0; i < allmeasurements.length; i++) {
+                    allmeasurements[i].style.display = 'none';
+                }
+
+                // Toggle the display of the selected notes
+                if (measInfo.style.display === 'block') {
+                    measInfo.style.display = 'none';
+                } else {
+                    // If the notes container is not displayed, insert it before the next sibling of the clicked link's parent node
+                    link.parentNode.insertBefore(measInfo, link.nextSibling);
+                    measInfo.style.display = 'block';
+                }
+            }
+
+
+
         </script>
     </body>
 </html>
