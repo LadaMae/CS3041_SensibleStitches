@@ -38,13 +38,11 @@
 
         <!-- Tab content -->
         <div id="refImages" class="tabContent">
-            <div class = "refImageGallery">
-
-            </div>
+            <div class = "refImageGallery"></div>
 
             <div class = "addRefPhoto">
-                <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="displayImage(this)">
-                <button class="addRefButton" onclick="document.getElementById('fileInput').click()">
+                <input type="file" id="refFileInput" accept="image/*" style="display: none;" onchange="displayImage(this, '.refImageGallery')">
+                <button class="addRefButton" onclick="document.getElementById('refFileInput').click()">
                     <i class="glyphicon glyphicon-plus" style = "font-size: 64px; color: #FBFEFB;"></i>
                 </button>
             </div>
@@ -61,8 +59,14 @@
         </div>
 
         <div id="finishedPhotos" class="tabContent">
-            <h3>Tokyo</h3>
-            <p>Tokyo is the capital of Japan.</p>
+            <div class = "finImageGallery"></div>
+
+            <div class = "addFinPhoto">
+                <input type="file" id="finFileInput" accept="image/*" style="display: none;" onchange="displayImage(this, '.finImageGallery')">
+                <button class="addFinButton" onclick="document.getElementById('finFileInput').click()">
+                    <i class="glyphicon glyphicon-plus" style = "font-size: 64px; color: #FBFEFB;"></i>
+                </button>
+            </div>
         </div>
 
         <script>
@@ -122,8 +126,8 @@
 
             }
 
-            function displayImage(input) {
-                var gallery = document.querySelector('.refImageGallery');
+            function displayImage(input, gallery) {
+                var gallery = document.querySelector(gallery);
 
                 // Check if any file is selected
                 if (input.files && input.files[0]) {
@@ -163,6 +167,7 @@
             }
 
 
+            
         </script>
     </body>
 </html>

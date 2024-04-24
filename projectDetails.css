@@ -77,6 +77,7 @@ hr.rounded {
     to {opacity: 1;}
 }
 
+/*REF GALLERY*/
 div.refImageGallery {
     display: flex;
     flex-wrap: wrap;
@@ -113,5 +114,46 @@ div.refImageGallery {
 }
 
 .addRefButton:hover {
+    background-color: #F3D8C7;
+}
+
+
+/*FIN GALLERY*/
+div.finImageGallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.finImageGallery img {
+    flex: 0 0 auto; 
+    margin-right: 10px;
+    margin-bottom: 10px; 
+    max-width: calc(33.333% - 10px); 
+    max-height: 200px; 
+    cursor: pointer; 
+    box-sizing: border-box; 
+}
+
+.addFinPhoto {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1;
+}
+
+.addFinButton {
+    background-color: #D0B8AC;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    transition: background-color 0.3s;
+}
+
+.addFinButton:hover {
     background-color: #F3D8C7;
 }
