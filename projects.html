@@ -36,9 +36,9 @@
 
         <div id = "projectNavigation" class = "projectNav">
             <a href = "projectDetails.html"><button class = "projectButton">Project 1</button></a>
-            <button class = "projectButton">Project 2</button>
-            <button class = "projectButton">Project 3</button>
-            <button class = "projectButton">Project 4</button>
+            <a href = "projectDetails.html"></a><button class = "projectButton">Project 2</button></a>
+            <a href = "projectDetails.html"></a><button class = "projectButton">Project 3</button></a>
+            <a href = "projectDetails.html"></a><button class = "projectButton">Project 4</button></a>
         </div>
 
         <div class = "projectButtonDiv">
@@ -67,34 +67,6 @@
                 }
             }
 
-            // Function to retrieve projects from local storage
-            /**function getProjectsFromStorage() {
-                return JSON.parse(localStorage.getItem('projects')) || [];
-            }
-
-            // Function to save projects to local storage
-            function saveProjectsToStorage(projects) {
-                localStorage.setItem('projects', JSON.stringify(projects));
-            }
-
-            // Function to load projects from local storage and populate the UI
-            function loadProjects() {
-                var projectNav = document.getElementById("projectNavigation");
-                projectNav.innerHTML = ''; // Clear existing projects
-
-                var projects = getProjectsFromStorage();
-                projects.forEach(function(projectName) {
-                    var newButton = document.createElement("button");
-                    newButton.className = "projectButton";
-                    newButton.textContent = projectName;
-                    //newButton.addEventListener('click', function() {
-                        // Redirect to project page when the button is clicked
-                        //window.location.href = project.pageUrl;
-                    //});
-                    projectNav.appendChild(newButton);
-                });
-            }*/
-
             function changeSize(widthChange, heightChange, fontSizeChange) {
                 const buttons = document.querySelectorAll('.projectButton');
                 buttons.forEach(button => {
@@ -121,17 +93,32 @@
                     newButton.textContent = projectName;
                     projectNav.appendChild(newButton);
 
-                    //var projects = getProjectsFromStorage();
-                    //projects.push(projectName); //, pageUrl: projectPageUrl });
-                    //saveProjectsToStorage(projects);
-                    //loadProjects();
+                    createNewHTMLFile();
+
                 }
             }
 
-            /**window.onload = function() {
-                loadProjects();
-            };*/
 
+            //Attempt to duplicate html page (failed)
+            function createNewHTMLFile() {
+                fetch('projectDetails.html')
+                    .then(response => response.text())
+                    .then(existingContent => {
+                        const blob = new Blob([existingContent], { type: 'text/html' });
+
+                        const url = URL.createObjectURL(blob);
+
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'newProjectDetails.html'; 
+                        a.click();
+
+                        URL.revokeObjectURL(url);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching file:', error);
+                    });
+            }
     
         </script>
     </body>
